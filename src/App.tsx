@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 
 import FilmsPage from "./pages/FilmsPage"
 import MusicPage from "./pages/MusicPage"
+import DundiesPage from "./pages/DundiesPage"
 
 const topics = [
   {
@@ -28,13 +29,13 @@ const topics = [
   },
   {
     number: "03",
-    slug: "comidas",
-    title: "Comidas",
-    description: "que gosto de CU             kie.",
-    detail: "Um espaço para comidas favoritas, doces e combinações que talvez precisem de explicação.",
-    picks: ["Cookies", "Pratos favoritos", "Doces"],
+    slug: "dundies",
+    title: "Os Dundies",
+    description: "Uma premiação muito séria para categorias completamente aleatórias. (Mentira.)",
+    detail: "Uma cerimônia de gala para descobrir quem leva o Dundie em cada categoria improvável.",
+    picks: ["Categorias aleatórias", "Quatro alternativas", "Um Dundie"],
     accent: "bg-[#FF9A8B]",
-    letter: "C",
+    letter: "D",
     rotation: "-rotate-1",
   },
   {
@@ -79,7 +80,7 @@ function TopicPage({ topic }: { topic: (typeof topics)[number] }) {
 const facts = [
   ["01", "Churros Grátis", "Ela sabe exatamente CADA palavra do monólogo de BoJack Horseman sobre churros grátis."],
   ["02", "Steven Universo", "É o melhor desenho do mundo, e ela sabe todas as músicas (algumas em inglês)."],
-  ["03", "Meu lugar feliz", "Isso não existe de verdade. As pessoas deveriam começar a aceitar o próprio sofrimento e a melancolia."],
+  ["03", "Sopinha", "Curiosamente, a Sophia odeia sopa. Qualquer tipo de sopa, nojento"],
 ]
 
 function ArrowIcon() {
@@ -147,6 +148,7 @@ export default function App() {
 
   if (activeTopic?.slug === "filmes-series") return <FilmsPage />
   if (activeTopic?.slug === "musicas") return <MusicPage />
+  if (activeTopic?.slug === "dundies") return <DundiesPage />
   if (activeTopic) return <TopicPage topic={activeTopic} />
 
   return (
@@ -223,7 +225,7 @@ export default function App() {
             <a key={topic.title} href={`#${topic.slug}`} aria-label={`Abrir ${topic.title}`} className={`topic-card group relative block min-h-[320px] overflow-hidden rounded-[2rem] border-2 border-[#281B1D] p-7 md:p-9 ${topic.accent} ${topic.rotation}`}>
               <div className="relative z-10 flex h-full flex-col justify-between">
                 <div className="flex items-start justify-between">
-                  <span className="font-mono text-sm font-bold">SABOR {topic.number}</span>
+                  <span className="font-mono text-sm font-bold">{topic.slug === "dundies" ? "PRÊMIO" : "SABOR"} {topic.number}</span>
                   <span className="grid size-12 place-items-center rounded-full border-2 border-[#281B1D] bg-[#F8ECDD] transition-transform duration-300 group-hover:rotate-[-35deg] group-hover:bg-white"><ArrowIcon /></span>
                 </div>
                 <div>
